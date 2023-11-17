@@ -62,3 +62,11 @@
   background: rgb(1, 66, 180);
   cursor: pointer;
 }
+
+.pageDivider {
+  height: 1rem;
+  background-color: #1f1f1f;
+  margin: 0 -5.2rem;
+  border: none;
+  margin-top: 3rem;
+}

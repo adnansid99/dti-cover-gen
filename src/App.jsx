@@ -151,21 +151,26 @@ export default function App() {
             }}
           />
 
+          <hr className="pageDivider no-print" />
+
           {/* Index Page */}
           <IndexPage />
-
+          <hr className="pageDivider no-print" />
           {/* Sub cover pages */}
           {[...Array(subPages)].map((_, subPagesNo) => {
             return (
-              <SubPages
-                key={subPagesNo}
-                props={{
-                  submittedToData,
-                  submittedByData,
-                  subject,
-                  subPagesNo,
-                }}
-              />
+              <>
+                <SubPages
+                  key={subPagesNo}
+                  props={{
+                    submittedToData,
+                    submittedByData,
+                    subject,
+                    subPagesNo,
+                  }}
+                />
+                <hr className="pageDivider no-print" />
+              </>
             );
           })}
         </Box>
