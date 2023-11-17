@@ -4,6 +4,7 @@ import MainPage from "./components/MainPage";
 import SubPages from "./components/SubPages";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import IndexPage from "./components/IndexPage";
 
 const initSubTo = [
   "Teacher's name",
@@ -139,7 +140,7 @@ export default function App() {
             gap: 6,
           }}
         >
-          {/* my code here */}
+          {/* Main cover page */}
           <MainPage
             props={{
               initSubTo,
@@ -150,8 +151,11 @@ export default function App() {
             }}
           />
 
+          {/* Index Page */}
+          <IndexPage />
+
+          {/* Sub cover pages */}
           {[...Array(subPages)].map((_, subPagesNo) => {
-            let isSubPage = true;
             return (
               <SubPages
                 key={subPagesNo}
@@ -160,13 +164,10 @@ export default function App() {
                   submittedByData,
                   subject,
                   subPagesNo,
-                  isSubPage,
                 }}
               />
             );
           })}
-
-          {/* my code here */}
         </Box>
       </Box>
     </Box>
