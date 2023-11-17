@@ -1,10 +1,9 @@
-import { Box, Button, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import { useState } from "react";
-import MainPage from "./components/MainPage";
-import SubPages from "./components/SubPages";
-import ControlPointIcon from "@mui/icons-material/ControlPoint";
-import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
-import IndexPage from "./components/IndexPage";
+import MainPage from "./MainPage";
+import SubPages from "./SubPages";
+import IndexPage from "./IndexPage";
+import PageController from "./PageController";
 
 const initSubTo = [
   "Teacher's name",
@@ -25,15 +24,6 @@ export default function App() {
   const [submittedByData, setSubmittedByData] = useState(initSubBy);
   const [subPages, setSubPages] = useState(0);
   const [isIndex, setIsIndex] = useState(true);
-
-  const handleAddItem = () => {
-    setSubPages((prev) => prev + 1);
-  };
-  const handleRemoveItem = () => {
-    if (subPages != 0) {
-      setSubPages((prev) => prev - 1);
-    }
-  };
 
   const handleInput = (e) => {
     setSubject(e.currentTarget.textContent);
@@ -70,7 +60,6 @@ export default function App() {
         display: "flex",
         justifyContent: "center",
         alignItems: "center",
-
         flexDirection: "column",
       }}
     >
@@ -82,71 +71,21 @@ export default function App() {
           justifyContent: "center",
           alignItems: "center",
           flexDirection: "column",
-
-          // backgroundColor: "red",
         }}
       >
-        <Box
-          className="no-print"
-          sx={{
-            display: "flex",
-            justifyContent: "center",
-            flexDirection: "column",
-            gap: 1,
-            position: "absolute",
-            left: "10px",
-            top: "10px",
-          }}
-        >
-          <Box sx={{ display: "flex", flexDirection: "column", gap: 1 }}>
-            <Typography
-              variant="h6"
-              sx={{ fontWeight: "500", color: "#bfbfbf", margin: "0 auto" }}
-            >
-              SubCover: {subPages}
-            </Typography>
-            <Box sx={{ display: "flex", gap: 1 }}>
-              <Button variant="outlined" onClick={handleAddItem}>
-                Add
-                <ControlPointIcon
-                  sx={{ marginLeft: "4px", marginRight: "-8px" }}
-                />
-              </Button>
-              <Button variant="outlined" onClick={handleRemoveItem}>
-                Remove
-                <RemoveCircleOutlineIcon
-                  sx={{ marginLeft: "4px", marginRight: "-8px" }}
-                />
-              </Button>
-            </Box>
-          </Box>
-          <Button variant="contained" onClick={() => window.print()}>
-            Save as PDF
-          </Button>
-          <Button
-            variant="contained"
-            sx={{
-              backgroundColor: isIndex ? "red" : "green",
-              "&:hover": { backgroundColor: isIndex ? "#d10000" : "#00a300" },
-            }}
-            onClick={() => setIsIndex((prev) => !prev)}
-          >
-            {isIndex ? "Disable" : "Enable"} Index
-          </Button>
-        </Box>
+        {/* page controller */}
+        <PageController
+          props={{ setSubPages, subPages, isIndex, setIsIndex }}
+        />
+
         <Box
           sx={{
             width: 750,
             aspectRatio: 8.27 / 11.69,
             backgroundColor: "#fff",
-
             padding: 10,
-
-            // border: `1px red soild`,
-
             display: "flex",
             flexDirection: "column",
-            // alignItems: "center",
             justifyContent: "center",
             gap: 6,
           }}

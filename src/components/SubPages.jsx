@@ -1,13 +1,13 @@
 /* eslint-disable react/prop-types */
 import { Box, Typography } from "@mui/material";
 import Signature from "./Signature";
-import DaffLogo from "./DaffLogo";
+import DitLogo from "./DtiLogo";
 
 export default function SubPages({ props }) {
   const { submittedToData, submittedByData, subject, subPagesNo } = props;
   return (
     <>
-      <DaffLogo paddingTop="6rem" />
+      <DitLogo paddingTop="6rem" />
       <Box
         sx={{
           display: "flex",
