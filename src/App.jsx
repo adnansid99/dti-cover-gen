@@ -24,6 +24,7 @@ export default function App() {
   const [submittedToData, setSubmittedToData] = useState(initSubTo);
   const [submittedByData, setSubmittedByData] = useState(initSubBy);
   const [subPages, setSubPages] = useState(0);
+  const [isIndex, setIsIndex] = useState(true);
 
   const handleAddItem = () => {
     setSubPages((prev) => prev + 1);
@@ -120,7 +121,17 @@ export default function App() {
             </Box>
           </Box>
           <Button variant="contained" onClick={() => window.print()}>
-            Save
+            Save as PDF
+          </Button>
+          <Button
+            variant="contained"
+            sx={{
+              backgroundColor: isIndex ? "red" : "green",
+              "&:hover": { backgroundColor: isIndex ? "#d10000" : "#00a300" },
+            }}
+            onClick={() => setIsIndex((prev) => !prev)}
+          >
+            {isIndex ? "Disable" : "Enable"} Index
           </Button>
         </Box>
         <Box
@@ -154,8 +165,13 @@ export default function App() {
           <hr className="pageDivider no-print" />
 
           {/* Index Page */}
-          <IndexPage />
-          <hr className="pageDivider no-print" />
+          {isIndex ? (
+            <>
+              <IndexPage />
+              <hr className="pageDivider no-print" />
+            </>
+          ) : null}
+
           {/* Sub cover pages */}
           {[...Array(subPages)].map((_, subPagesNo) => {
             return (
