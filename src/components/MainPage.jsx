@@ -1,4 +1,3 @@
-/* eslint-disable react/prop-types */
 import { Box, Typography } from "@mui/material";
 import Signature from "./Signature";
 import DitLogo from "./DtiLogo";

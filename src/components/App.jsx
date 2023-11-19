@@ -1,29 +1,23 @@
 import { Box } from "@mui/material";
-import { useState } from "react";
+import { useContext } from "react";
 import MainPage from "./MainPage";
 import SubPages from "./SubPages";
 import IndexPage from "./IndexPage";
 import PageController from "./PageController";
-
-const initSubTo = [
-  "Teacher's name",
-  "Instructor",
-  "Daffodil Technical Institute (DTI)",
-];
-const initSubBy = [
-  "Name: Your name",
-  "Board roll: xxxxx",
-  "Reg. no: xxxxx",
-  "Semester: xth",
-  "Department: Computer (x)",
-];
+import { AppContext } from "./Context";
 
 export default function App() {
-  const [subject, setSubject] = useState("subject (code)");
-  const [submittedToData, setSubmittedToData] = useState(initSubTo);
-  const [submittedByData, setSubmittedByData] = useState(initSubBy);
-  const [subPages, setSubPages] = useState(0);
-  const [isIndex, setIsIndex] = useState(true);
+  const {
+    initSubTo,
+    initSubBy,
+    setSubject,
+    submittedToData,
+    setSubmittedToData,
+    submittedByData,
+    setSubmittedByData,
+    subPages,
+    isIndex,
+  } = useContext(AppContext);
 
   const handleInput = (e) => {
     setSubject(e.currentTarget.textContent);
@@ -74,9 +68,7 @@ export default function App() {
         }}
       >
         {/* page controller */}
-        <PageController
-          props={{ setSubPages, subPages, isIndex, setIsIndex }}
-        />
+        <PageController />
 
         <Box
           sx={{
@@ -115,15 +107,7 @@ export default function App() {
           {[...Array(subPages)].map((_, subPagesNo) => {
             return (
               <>
-                <SubPages
-                  key={subPagesNo}
-                  props={{
-                    submittedToData,
-                    submittedByData,
-                    subject,
-                    subPagesNo,
-                  }}
-                />
+                <SubPages key={subPagesNo} props={{ subPagesNo }} />
                 <hr className="pageDivider no-print" />
               </>
             );

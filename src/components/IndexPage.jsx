@@ -11,14 +11,13 @@ import {
   Typography,
 } from "@mui/material";
 import DeleteRoundedIcon from "@mui/icons-material/DeleteRounded";
-import { useState } from "react";
+import { useContext, useState } from "react";
+import { AppContext } from "./Context";
 
-const data = [];
 export default function IndexPage() {
-  const [items, setItems] = useState(data);
-
-  const [name, setName] = useState("");
-  const [date, setDate] = useState("");
+  const { items, setItems, name, setName, date, setDate, setSubPages } =
+    useContext(AppContext);
+  const [showDeleteButton, setShowDeleteButton] = useState(false);
 
   const styles = {
     border: {
@@ -29,10 +28,6 @@ export default function IndexPage() {
     },
   };
 
-  console.log(items);
-
-  const [showDeleteButton, setShowDeleteButton] = useState(false);
-
   const handleAddItem = () => {
     const newItem = {
       id: items.length + 1,
@@ -40,7 +35,9 @@ export default function IndexPage() {
       date: date,
     };
     setItems([...items, newItem]);
+    setSubPages((prev) => prev + 1);
   };
+  // console.log(items[0].name);
   return (
     <Box sx={{ minHeight: "90vh", maxHeight: "100%", paddingTop: "6rem" }}>
       <Box
@@ -102,9 +99,10 @@ export default function IndexPage() {
 
                   <Fade in={showDeleteButton} mountOnEnter unmountOnExit>
                     <IconButton
-                      onClick={() =>
-                        setItems((e) => e.filter((item) => item.id !== row.id))
-                      }
+                      onClick={() => {
+                        setSubPages((prev) => (prev == 0 ? prev : prev - 1));
+                        setItems((e) => e.filter((item) => item.id !== row.id));
+                      }}
                     >
                       <DeleteRoundedIcon sx={{ fill: "red" }} />
                     </IconButton>

@@ -1,13 +1,16 @@
-/* eslint-disable react/prop-types */
 import { Box, Typography } from "@mui/material";
 import Signature from "./Signature";
 import DitLogo from "./DtiLogo";
+import { useContext } from "react";
+import { AppContext } from "./Context";
 
 export default function SubPages({ props }) {
-  const { submittedToData, submittedByData, subject, subPagesNo } = props;
+  const { submittedToData, submittedByData, subject, items } =
+    useContext(AppContext);
+  const { subPagesNo } = props;
   return (
     <>
-      <DitLogo paddingTop="6rem" />
+      <DitLogo paddingTop="3rem" />
       <Box
         sx={{
           display: "flex",
@@ -24,13 +27,29 @@ export default function SubPages({ props }) {
           Lab no. {subPagesNo + 1}
         </Typography>
 
-        <h2
-          // onInput={handleInput}
-          // contentEditable={true}
-          style={{ fontWeight: "600", color: "#BF8F00" }}
-        >
-          {subject}
-        </h2>
+        <h2 style={{ fontWeight: "600", color: "#BF8F00" }}>{subject}</h2>
+        {items.length == 0 || items[subPagesNo] == undefined ? null : (
+          <Typography
+            variant="h6"
+            sx={{
+              color: "#0F75B6",
+              fontWeight: "600",
+              marginTop: "1rem",
+            }}
+          >
+            Lab Title:{" "}
+            <span
+              style={{
+                // float: "left",
+                color: "#292A2D",
+                fontWeight: "500",
+                fontSize: "17px",
+              }}
+            >
+              {items[subPagesNo].name}
+            </span>
+          </Typography>
+        )}
       </Box>
 
       <Box sx={{ display: "flex", flexDirection: "column", gap: 7 }}>
@@ -47,9 +66,7 @@ export default function SubPages({ props }) {
               <span
                 key={index}
                 id={index}
-                // onInput={handleSubTo}
                 style={{ fontSize: "18px", fontWeight: "500" }}
-                // contentEditable={true}
               >
                 {data}
               </span>
@@ -69,9 +86,7 @@ export default function SubPages({ props }) {
               <p
                 key={index}
                 id={index}
-                // onInput={handleSubBy}
                 style={{ fontSize: "18px", fontWeight: "500" }}
-                // contentEditable={true}
               >
                 {data}
               </p>

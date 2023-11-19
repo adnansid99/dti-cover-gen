@@ -1,10 +1,11 @@
-/* eslint-disable react/prop-types */
 import { Box, Button, Typography } from "@mui/material";
 import ControlPointIcon from "@mui/icons-material/ControlPoint";
 import RemoveCircleOutlineIcon from "@mui/icons-material/RemoveCircleOutline";
+import { useContext } from "react";
+import { AppContext } from "./Context";
 
-export default function PageController({ props }) {
-  const { setSubPages, subPages, isIndex, setIsIndex } = props;
+export default function PageController() {
+  const { setSubPages, subPages, isIndex, setIsIndex } = useContext(AppContext);
 
   const handleAddItem = () => {
     setSubPages((prev) => prev + 1);

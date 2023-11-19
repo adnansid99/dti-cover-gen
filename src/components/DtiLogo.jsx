@@ -1,5 +1,5 @@
-/* eslint-disable react/prop-types */
 import dtiLogo from "../assets/dtiLogo.png";
+
 export default function DaffLogo(props) {
   return (
     <img
