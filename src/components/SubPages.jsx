@@ -35,12 +35,12 @@ export default function SubPages({ props }) {
               color: "#0F75B6",
               fontWeight: "600",
               marginTop: "1rem",
+              textAlign: "center",
             }}
           >
             Lab Title:{" "}
             <span
               style={{
-                // float: "left",
                 color: "#292A2D",
                 fontWeight: "500",
                 fontSize: "17px",
