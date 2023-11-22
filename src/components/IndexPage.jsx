@@ -66,6 +66,9 @@ export default function IndexPage() {
               <TableCell sx={{ color: "#FFF", minWidth: 100 }} align="right">
                 Date
               </TableCell>
+              <TableCell sx={{ color: "#FFF", minWidth: 100 }} align="right">
+                Page no.
+              </TableCell>
             </TableRow>
           </TableHead>
 
@@ -113,6 +116,9 @@ export default function IndexPage() {
                 </TableCell>
                 <TableCell sx={styles.border} align="right">
                   {row.date}
+                </TableCell>
+                <TableCell sx={styles.border} align="right">
+                  {row.page}
                 </TableCell>
               </TableRow>
             ))}
