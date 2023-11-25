@@ -5,7 +5,7 @@ import { useContext } from "react";
 import { AppContext } from "./Context";
 
 export default function SubPages({ props }) {
-  const { submittedToData, submittedByData, subject, items } =
+  const { submittedToData, submittedByData, subject, items, title } =
     useContext(AppContext);
   const { subPagesNo } = props;
   return (
@@ -24,7 +24,7 @@ export default function SubPages({ props }) {
           variant="h3"
           sx={{ fontSize: "35px", fontWeight: "700", color: "#1F3864" }}
         >
-          Lab no. {subPagesNo + 1}
+          {title.split(" ")[0]} no. {subPagesNo + 1}
         </Typography>
 
         <h2 style={{ fontWeight: "600", color: "#BF8F00" }}>{subject}</h2>
@@ -38,7 +38,7 @@ export default function SubPages({ props }) {
               textAlign: "center",
             }}
           >
-            Lab Title:{" "}
+            Title:{" "}
             <span
               style={{
                 color: "#292A2D",

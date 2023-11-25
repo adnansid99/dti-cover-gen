@@ -1,9 +1,16 @@
-import { Box, Typography } from "@mui/material";
+import { Box } from "@mui/material";
 import Signature from "./Signature";
 import DitLogo from "./DtiLogo";
 
 export default function MainPage({ props }) {
-  const { initSubTo, initSubBy, handleInput, handleSubTo, handleSubBy } = props;
+  const {
+    initSubTo,
+    initSubBy,
+    handleInput,
+    handleSubTo,
+    handleSubBy,
+    handleTitle,
+  } = props;
 
   return (
     <>
@@ -17,12 +24,13 @@ export default function MainPage({ props }) {
           gap: 2,
         }}
       >
-        <Typography
-          variant="h3"
-          sx={{ fontSize: "40px", fontWeight: "700", color: "#1F3864" }}
+        <h1
+          onInput={handleTitle}
+          contentEditable={true}
+          style={{ fontSize: "40px", fontWeight: "700", color: "#1F3864" }}
         >
-          Lab Report On
-        </Typography>
+          [Title]
+        </h1>
 
         <h2
           onInput={handleInput}

@@ -17,8 +17,12 @@ export default function App() {
     setSubmittedByData,
     subPages,
     isIndex,
+    setTitle,
   } = useContext(AppContext);
 
+  const handleTitle = (e) => {
+    setTitle(e.currentTarget.textContent);
+  };
   const handleInput = (e) => {
     setSubject(e.currentTarget.textContent);
   };
@@ -90,6 +94,7 @@ export default function App() {
               handleInput,
               handleSubTo,
               handleSubBy,
+              handleTitle,
             }}
           />
 

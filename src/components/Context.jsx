@@ -22,6 +22,7 @@ function AppProvider({ children }) {
   const [date, setDate] = useState("");
   // index section
 
+  const [title, setTitle] = useState("[Title] report");
   const [subject, setSubject] = useState("subject (code)");
   const [submittedToData, setSubmittedToData] = useState(initSubTo);
   const [submittedByData, setSubmittedByData] = useState(initSubBy);
@@ -37,6 +38,8 @@ function AppProvider({ children }) {
     setDate,
     initSubTo,
     initSubBy,
+    title,
+    setTitle,
     subject,
     setSubject,
     submittedToData,
